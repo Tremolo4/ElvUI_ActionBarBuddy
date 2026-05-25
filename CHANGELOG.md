@@ -1,4 +1,4 @@
-v3.5 2/25/2026
+v3.6 5/25/2026
 
+• do some code cleanup to fix some issues
 • toc bump
-• protect health check in retail as its a secret
