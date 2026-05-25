@@ -534,7 +534,7 @@ local function CreateFadeParents(barNum)
 		frame:RegisterEvent('PLAYER_CAN_GLIDE_CHANGED')
 	end
 
-	if E.Retail or E.Cata then
+	if E.Retail or E.Mists or E.Cata then
 		frame:RegisterEvent('VEHICLE_UPDATE')
 		frame:RegisterUnitEvent('UNIT_ENTERED_VEHICLE', 'player')
 		frame:RegisterUnitEvent('UNIT_EXITED_VEHICLE', 'player')
