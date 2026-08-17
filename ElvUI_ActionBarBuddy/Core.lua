@@ -457,6 +457,10 @@ do
 		local inInstanceMods = (db.displayTriggers.inDungeon and db.displayTriggers.inPvP and db.displayTriggers.inRaid and db.displayTriggers.inScenario and db.displayTriggers.inNone) or (not db.displayTriggers.inDungeon and not db.displayTriggers.inPvP and not db.displayTriggers.inRaid and not db.displayTriggers.inScenario and not db.displayTriggers.inNone) and inInstance
 		local spellBookMods = (db.displayTriggers.isSpellsBookOpen and db.displayTriggers.isSpecTabOpen and db.displayTriggers.isTalentTabOpen) or (not db.displayTriggers.isSpellsBookOpen and not db.displayTriggers.isSpecTabOpen and not db.displayTriggers.isTalentTabOpen) and (IsSpellBookOpen() or IsSpecTabOpen() or IsTalentTabOpen())
 		local groupedMouseover = db.displayTriggers.mouseover and ABB:IsGroupedMouseoverActive()
+		local talentSpecIndex = GetActiveTalentGroup(false, false)
+
+		ABB:Print("db.displayTriggers.talentSpec = " .. tostring(db.displayTriggers.talentSpec))
+		ABB:Print("talentSpecIndex = " .. tostring(talentSpecIndex))
 
 		return groupedMouseover or ElvUI_KeyBinder and ElvUI_KeyBinder.active
 		or (((db.displayTriggers.inInstance and (inInstanceMods or db.displayTriggers.inDungeon))) and inDungeon)
@@ -484,6 +488,7 @@ do
 		or ((db.displayTriggers.onTaxi == 2 and UnitOnTaxi('player')) or (db.displayTriggers.onTaxi == 1 and not UnitOnTaxi('player')))
 		or (E.Retail and (db.displayTriggers.isDragonRiding and not IsPassenger() and (canGlide or CanGlide(event))))
 		or (not E.Classic and (db.displayTriggers.inVehicle and UnitExists('vehicle') and (not db.displayTriggers.hideAsPassenger or db.displayTriggers.hideAsPassenger and not IsPassenger())))
+		or (db.displayTriggers.talentSpec == talentSpecIndex)
 	end
 
 	function ABB:FadeParent_OnEvent(event, arg1)

@@ -179,6 +179,13 @@ local globalFadeOptions = {
 		name = L["Player Casting"],
 		order = 50,
 	},
+	talentSpec = {
+		name = function(info) local text = L["Talent Spec (|cff%s%s|r)"] local value = E.db.abb[info[#info-2]][info[#info-1]][info[#info]] if value == 2 then return format(text, '00FF00', L["Second"]) elseif value == 1 then return format(text, 'FF0000', L["First"]) else return format(text, 'FFFF00', L["Ignore"]) end end,
+		order = 50,
+		tristate = true,
+		get = function(info) local value = E.db.abb[info[#info-2]][info[#info-1]][info[#info]] if value == 2 then return true elseif value == 1 then return nil else return false end end,
+		set = function(info, value) E.db.abb[info[#info-2]][info[#info-1]][info[#info]] = (value and 2) or (value == nil and 1) or 0 if info[#info-2] == 'global' then for barName in pairs(AB.handledBars) do ABB:FadeParent_OnEvent('UPDATING_OPTIONS', barName) end else ABB:FadeParent_OnEvent('UPDATING_OPTIONS', info[#info-2]) end end,
+	}
 }
 
 local bars = { 'barPet', 'stanceBar' }

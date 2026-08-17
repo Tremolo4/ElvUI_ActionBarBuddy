@@ -16,6 +16,7 @@ local ElvUIDefaultValues = {
 	onTaxi = 0,
 	playerCasting = true,
 	isProfessionBookOpen = false,
+	talentSpec = 0,
 	inInstance = false,					--* Modifier Parent
 	inDungeon = false,					--* Modifier
 	inNone = false,						--* Modifier
