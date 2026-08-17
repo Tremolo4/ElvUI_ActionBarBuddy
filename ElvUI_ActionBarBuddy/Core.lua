@@ -459,9 +459,6 @@ do
 		local groupedMouseover = db.displayTriggers.mouseover and ABB:IsGroupedMouseoverActive()
 		local talentSpecIndex = GetActiveTalentGroup(false, false)
 
-		ABB:Print("db.displayTriggers.talentSpec = " .. tostring(db.displayTriggers.talentSpec))
-		ABB:Print("talentSpecIndex = " .. tostring(talentSpecIndex))
-
 		return groupedMouseover or ElvUI_KeyBinder and ElvUI_KeyBinder.active
 		or (((db.displayTriggers.inInstance and (inInstanceMods or db.displayTriggers.inDungeon))) and inDungeon)
 		or (((db.displayTriggers.inInstance and (inInstanceMods or db.displayTriggers.inNone))) and inNone)
